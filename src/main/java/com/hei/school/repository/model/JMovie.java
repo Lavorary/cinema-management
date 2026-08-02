@@ -1,7 +1,6 @@
 package com.hei.school.repository.model;
 
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -13,17 +12,15 @@ import org.hibernate.annotations.UuidGenerator;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="movies")
+@Table(name = "movies")
 public class JMovie {
-    @Id
-    @UuidGenerator
-    private String id;
+  @Id @UuidGenerator private String id;
 
-    private String title;
+  private String title;
 
-    private String genres;
+  private String genres;
 
-    private String description;
+  private String description;
 
-    private Long duration;
+  private Long duration;
 }

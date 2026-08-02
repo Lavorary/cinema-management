@@ -12,12 +12,11 @@ import org.hibernate.annotations.UuidGenerator;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="rooms")
+@Table(name = "rooms")
 public class JRoom {
-    @Id @UuidGenerator
-    private String id;
+  @Id @UuidGenerator private String id;
 
-    private String number;
+  private String number;
 
-    private Integer capacity;
+  private Integer capacity;
 }

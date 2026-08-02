@@ -10,14 +10,13 @@ import org.hibernate.annotations.UuidGenerator;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="seats")
+@Table(name = "seats")
 public class JSeat {
-    @Id @UuidGenerator
-    private String id;
+  @Id @UuidGenerator private String id;
 
-    private String number;
+  private String number;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="room_id")
-    private JRoom room;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "room_id")
+  private JRoom room;
 }
