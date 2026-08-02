@@ -1,17 +1,16 @@
 package com.hei.school.model;
 
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Seat {
-    private UUID id;
-    private String number;
+  private UUID id;
+  private String number;
 }
