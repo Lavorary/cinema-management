@@ -14,4 +14,5 @@ public record User(
     String email,
     String password,
     String phone,
-    UserRole role) {}
+    UserRole role,
+    Reservation reservation) {}

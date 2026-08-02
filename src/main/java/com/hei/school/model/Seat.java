@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class Seat {
   private UUID id;
   private String number;
+  private Room room;
 }

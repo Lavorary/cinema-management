@@ -19,4 +19,5 @@ public class Movie {
   private List<Genre> genres;
   private String description;
   private Duration duration;
+  private List<Projection> projection;
 }

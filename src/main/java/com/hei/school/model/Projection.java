@@ -2,6 +2,7 @@ package com.hei.school.model;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,4 +17,7 @@ public class Projection {
   private UUID id;
   private Instant datetime;
   private BigDecimal seatPrice;
+  private Movie movie;
+  private Room room;
+  private List<Reservation> reservations;
 }

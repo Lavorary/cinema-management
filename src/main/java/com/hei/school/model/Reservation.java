@@ -16,4 +16,7 @@ public class Reservation {
   private UUID id;
   private Instant createdAt;
   private ReservationStatus status;
+  private User user;
+  private Projection projection;
+  private Seat seat;
 }
