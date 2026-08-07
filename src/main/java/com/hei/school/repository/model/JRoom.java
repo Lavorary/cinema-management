@@ -8,13 +8,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.UUID;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "rooms")
 public class JRoom {
-  @Id @UuidGenerator private String id;
+  @Id @UuidGenerator private UUID id;
 
   private String number;
 
