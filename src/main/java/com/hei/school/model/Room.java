@@ -1,9 +1,8 @@
 package com.hei.school.model;
 
+import com.hei.school.repository.model.JRoom;
 import java.util.List;
 import java.util.UUID;
-
-import com.hei.school.repository.model.JRoom;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = false)

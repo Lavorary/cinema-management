@@ -5,12 +5,11 @@ import com.hei.school.model.Movie;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
+import lombok.*;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @EqualsAndHashCode(callSuper = false)
