@@ -2,19 +2,18 @@ package com.hei.school.model;
 
 import java.util.List;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import com.hei.school.repository.model.JRoom;
+import lombok.*;
+
+@EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Room {
+public class Room extends JRoom {
   private UUID id;
   private String number;
-  private int capacity;
+  private Integer capacity;
   private List<Seat> seats;
   private List<Projection> projections;
 }
