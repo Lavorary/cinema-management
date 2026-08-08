@@ -2,7 +2,7 @@ package com.hei.school.repository.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import com.hei.school.enums.UserRole;
@@ -49,5 +49,5 @@ public class JUser {
   private UserRole role;
 
   @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
-  private List<JReservation> reservations;
+  private Set<JReservation> reservations;
 }
