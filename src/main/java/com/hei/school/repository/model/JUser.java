@@ -1,33 +1,53 @@
 package com.hei.school.repository.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.time.LocalDate;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import java.util.List;
+import java.util.UUID;
 
-@Data
+import com.hei.school.enums.UserRole;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "users")
+@Builder
 public class JUser {
-  @Id @UuidGenerator private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
+  @Column(name = "first_name", nullable = false)
   private String firstName;
 
+  @Column(name = "last_name")
   private String lastName;
 
+  @Column(name = "birth_date")
   private LocalDate birthDate;
 
+  @Column(name = "email", nullable = false, unique = true)
   private String email;
 
+  @Column(name = "password", nullable = false)
   private String password;
 
+  @Column(name = "phone")
   private String phone;
 
-  private String role;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "role")
+  private UserRole role;
+
+  @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY)
+  private List<JReservation> reservations;
 }
