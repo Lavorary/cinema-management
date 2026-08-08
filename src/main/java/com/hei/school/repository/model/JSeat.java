@@ -2,21 +2,32 @@ package com.hei.school.repository.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Setter;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "seats")
+@Builder
 public class JSeat {
-  @Id @UuidGenerator private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
   private String number;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "room_id")
   private JRoom room;
+
+  @ManyToMany(mappedBy = "seats")
+  private Set<JReservation> reservations;
 }
