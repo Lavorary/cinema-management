@@ -3,28 +3,40 @@ package com.hei.school.repository.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Set;
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Setter;
+
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "projections")
+@Builder
 public class JProjection {
-  @Id @UuidGenerator private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-  private Instant date;
+  private Instant datetime;
 
   private BigDecimal seatPrice;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "movie_id")
   private JMovie movie;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "room_id")
   private JRoom room;
+
+  @OneToMany(mappedBy = "projection_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  private Set<JReservation> reservations;
 }
