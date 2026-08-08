@@ -2,33 +2,52 @@ package com.hei.school.repository.model;
 
 import jakarta.persistence.*;
 import java.time.Instant;
-import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Setter;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.hei.school.enums.ReservationStatus;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "reservations")
+@Builder
 public class JReservation {
-  @Id @UuidGenerator private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
+  @Column(name = "created_at", nullable = false)
+  @CreationTimestamp
   private Instant createdAt;
 
-  private String status;
+  @Column(name = "status", nullable = false)
+  @Enumerated(EnumType.STRING)
+  private ReservationStatus status;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private JUser user;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "projection_id")
   private JProjection projection;
 
-  @OneToMany(fetch = FetchType.LAZY)
-  @JoinColumn(name = "seat_id")
-  private List<JSeat> seats;
+  @ManyToMany
+  @JoinTable(
+      name = "reservation_seats",
+      joinColumns = @JoinColumn(name = "reservation_id"),
+      inverseJoinColumns = @JoinColumn(name = "seat_id")
+  )
+  private Set<JSeat> seats;
 }
