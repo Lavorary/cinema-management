@@ -1,26 +1,41 @@
 package com.hei.school.repository.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.Setter;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
+import com.hei.school.enums.Genre;
+
 
 @Entity
-@Data
 @AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "movies")
+@Builder
 public class JMovie {
-  @Id @UuidGenerator private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
   private String title;
 
-  private String genres;
+  @Enumerated(EnumType.STRING)
+  private List<Genre> genres;
 
   private String description;
 
-  private Long duration;
+  private Duration duration;
+
+  @OneToMany(mappedBy = "movie_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  private Set<JProjection> projections;
 }
