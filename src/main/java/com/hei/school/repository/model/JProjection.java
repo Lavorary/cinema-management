@@ -5,13 +5,11 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Entity
 @AllArgsConstructor
@@ -37,6 +35,10 @@ public class JProjection {
   @JoinColumn(name = "room_id")
   private JRoom room;
 
-  @OneToMany(mappedBy = "projection_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @OneToMany(
+      mappedBy = "projection_id",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true,
+      fetch = FetchType.LAZY)
   private Set<JReservation> reservations;
 }

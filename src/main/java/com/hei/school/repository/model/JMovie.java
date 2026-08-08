@@ -1,19 +1,16 @@
 package com.hei.school.repository.model;
 
+import com.hei.school.enums.Genre;
 import jakarta.persistence.*;
+import java.time.Duration;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.Duration;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
-import com.hei.school.enums.Genre;
-
 
 @Entity
 @AllArgsConstructor
@@ -36,6 +33,10 @@ public class JMovie {
 
   private Duration duration;
 
-  @OneToMany(mappedBy = "movie_id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @OneToMany(
+      mappedBy = "movie_id",
+      cascade = CascadeType.ALL,
+      orphanRemoval = true,
+      fetch = FetchType.LAZY)
   private Set<JProjection> projections;
 }

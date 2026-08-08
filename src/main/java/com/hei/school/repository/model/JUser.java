@@ -1,18 +1,15 @@
 package com.hei.school.repository.model;
 
+import com.hei.school.enums.UserRole;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
-
-import com.hei.school.enums.UserRole;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @AllArgsConstructor
 @NoArgsConstructor

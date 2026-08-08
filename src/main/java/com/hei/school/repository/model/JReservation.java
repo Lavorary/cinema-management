@@ -1,19 +1,16 @@
 package com.hei.school.repository.model;
 
+import com.hei.school.enums.ReservationStatus;
 import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import org.hibernate.annotations.CreationTimestamp;
-
-import com.hei.school.enums.ReservationStatus;
 
 @Entity
 @Getter
@@ -47,7 +44,6 @@ public class JReservation {
   @JoinTable(
       name = "reservation_seats",
       joinColumns = @JoinColumn(name = "reservation_id"),
-      inverseJoinColumns = @JoinColumn(name = "seat_id")
-  )
+      inverseJoinColumns = @JoinColumn(name = "seat_id"))
   private Set<JSeat> seats;
 }

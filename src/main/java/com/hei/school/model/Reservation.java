@@ -7,9 +7,5 @@ import java.util.UUID;
 import lombok.Builder;
 
 @Builder
-public record Reservation (
-  UUID id,
-  Instant createdAt,
-  ReservationStatus status,
-  Projection projection,
-  Set<Seat> seats) {}
+public record Reservation(
+    UUID id, Instant createdAt, ReservationStatus status, Projection projection, Set<Seat> seats) {}

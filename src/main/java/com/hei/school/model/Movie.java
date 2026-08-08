@@ -8,10 +8,10 @@ import java.util.UUID;
 import lombok.Builder;
 
 @Builder
-public record Movie (
-  UUID id,
-  String title,
-  List<Genre> genres,
-  String description,
-  Duration duration,
-  Set<Projection> projections) {}
+public record Movie(
+    UUID id,
+    String title,
+    List<Genre> genres,
+    String description,
+    Duration duration,
+    Set<Projection> projections) {}

@@ -5,10 +5,5 @@ import java.time.Instant;
 import java.util.UUID;
 import lombok.Builder;
 
-
 @Builder
-public record Projection (
-  UUID id,
-  Instant datetime,
-  BigDecimal seatPrice,
-  Room room) {}
+public record Projection(UUID id, Instant datetime, BigDecimal seatPrice, Room room) {}
